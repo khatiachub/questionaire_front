@@ -1,0 +1,21 @@
+<div >
+    <form class="form-wrapper" [formGroup]="answersForm" action="" (ngSubmit)="sendAnswers()">
+       <div class="name-box">
+        <label class="name-label" for="">შეიყვანეთ თქვენი სახელი გვარი</label>
+        <input class="name-input" type="text" formControlName="fullname">
+       </div>
+        <div class="questions-wrapper" formArrayName="answers">
+                <div class="form" *ngFor="let question of getAnswers.controls; let i = index" [formGroupName]="i">
+                <div class="question-box">
+                    <label>კითხვა </label>
+                    <p class="parag">{{ questions[i]?.question }}</p>
+                </div>
+                <div class="question-box">
+                    <label >პასუხი</label>
+                    <input class="input" type="text"   formControlName="answer" placeholder="Your answer">
+                </div>
+                </div>
+        </div>
+        <button class="button" type="submit">პასუხების გაგზავნა</button>
+    </form>
+</div>

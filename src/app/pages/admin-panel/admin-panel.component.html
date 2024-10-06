@@ -1,0 +1,64 @@
+        <div class="admin-wrapper">
+            <a routerLink="/admin-panel">ადმინ.პანელი</a>
+            <a routerLink="/recieved-questions">გადმოგზავნილი/ შევსებული კითხვები</a>
+        </div>
+    
+        <div class="main-wrapper">
+       <div class="form-wrapper">
+        <h4>კითხვების დამატება</h4>
+        <form class="form" [formGroup]="questionForm" action="" (ngSubmit)="addQuestion()">
+            <div class="input-wrapper">
+                <label for="">კითხვა</label>
+                <input class="input" type="text" formControlName="question">
+            </div>
+            <div class="input-wrapper">
+                <label for="">პასუხი</label>
+                <input class="input" type="text" formControlName="answer"> 
+            </div>
+    
+            <div class="input-wrapper">
+                <div class="checkbox">
+                    <label for="">სავალდებულო</label>
+                    <input class="input" type="checkbox" formControlName="required">
+                </div>
+                <button class="button" type="submit">დამატება</button>
+            </div>
+        </form>
+       </div>
+    
+    
+        <div class="form-wrapper">
+            <p>დამატებული კითხვები</p>
+            <div *ngFor="let question of questions;">
+            <div *ngIf="!editForm" class="form">
+                    <div class="input-wrapper">
+                        <p>კითხვა</p>
+                        <p>{{question.question}}</p>
+                    </div>
+                    <div class="input-wrapper">
+                        <p>პასუხი</p>
+                        <p>{{question.answer}}</p>
+                    </div>
+                    <button (click)="editQuestions(question.id)" class="button" type="button">რედაქტირება</button>
+            </div>
+            </div>
+        <form *ngIf="editForm" class="form" [formGroup]="editQuestionForm" action="" (ngSubmit)="updateQuestion()">
+            <div class="input-wrapper">
+                <label for="">კითხვა</label>
+                <input class="input" type="text" formControlName="question" (ngModelChange)="setQuestion($event)" name="question">
+            </div>
+            <div class="input-wrapper">
+                <label for="">პასუხი</label>
+                <input class="input" type="text" formControlName="answer" (ngModelChange)="setAnswer($event)" name="answer"> 
+            </div>
+    
+            <div class="input-wrapper">
+                <div class="checkbox">
+                    <label for="">სავალდებულო</label>
+                    <input class="input" type="checkbox" formControlName="required" (ngModelChange)="setRequired($event)" name="required">
+                </div>
+                <button class="button" type="submit">შენახვა</button>
+            </div>
+        </form>
+        </div>
+        </div>

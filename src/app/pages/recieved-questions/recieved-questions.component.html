@@ -1,0 +1,27 @@
+<div class="admin-wrapper">
+    <a routerLink="/admin-panel">ადმინ.პანელი</a>
+    <a routerLink="/recieved-questions">გადმოგზავნილი/ შევსებული კითხვები</a>
+    <a routerLink="/">გასვლა</a>
+
+</div>
+<div class="main-wrapper">
+    <div class="user-wrapper">
+        <p>გადმოგზავნილი/ შევსებული კითხვები</p>
+        <div (click)="getAnswers(user.id)" class="user-row" *ngFor="let user of usersArray;">
+            <p>{{user.fullName}}</p>
+        </div>
+    </div>
+    <div class="answers">
+        <p >{{fullname}}</p>
+        <div class="answer-wrapper" *ngFor="let answer of answers;">
+            <div class="answer-row">
+                <p>კითხვა</p>
+                <p class="answer-parag">{{answer.question}}</p>
+            </div>
+            <div class="answer-row">
+                <p>პასუხი</p>
+                <p class="answer-parag">{{answer.answer}}</p>
+            </div>
+        </div>
+    </div>
+</div>

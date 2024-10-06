@@ -1,0 +1,38 @@
+<a routerLink="/answers">კითხვარი</a>
+<div class="form-wrapper">
+    <div class="buttons">
+        <button class="button" (click)="showLogin()">ავტორიზაცია</button>
+        <button class="button" (click)="showReg()">რეგისტრაცია</button>
+    </div>
+    <form class="form" [formGroup]="loginForm" *ngIf="showLoginForm&&!showRegForm" action="" (ngSubmit)="onLoginSubmit()">
+        <div class="input-wraper">
+            <label for="მომხმარებლის სახელი">მომხმარებლის სახელი</label>
+            <input class="input" type="text" formControlName="username">
+        </div>
+        <div class="input-wraper">
+            <label for="">პაროლი</label>
+            <div class="button-box">
+                <input style="width: 180px;" class="input" type="password" formControlName="password">
+                <button class="auth-but" type="submit">შესვლა</button>
+            </div>
+        </div>
+    </form>
+
+    <form class="form" [formGroup]="registrationForm" *ngIf="!showLoginForm&&showRegForm" action="" (ngSubmit)="onRegSubmit()">
+        <div class="input-wraper">
+            <label for="მომხმარებლის სახელი">შეიყვანეთ თქვენი სახელი</label>
+            <input class="input" type="text" formControlName="name">
+        </div>
+       <div class="input-wraper">
+        <label for="მომხმარებლის სახელი">მომხმარებლის სახელი</label>
+        <input class="input" type="text" formControlName="username">
+       </div>
+        <div class="input-wraper">
+            <label for="">პაროლი</label>
+            <div class="button-box">
+                <input style="width: 180px;" class="input" type="password" formControlName="password">
+                <button class="auth-but" type="submit">რეგისტრაცია</button>
+            </div>
+        </div>
+    </form>
+</div>
